@@ -2,6 +2,8 @@
 numpy>=1.23
 scipy>=1.9
 matplotlib>=3.6
+# Symbolic algebra (PrestazioniRoskam/07-08 *_Symbolical notebooks)
+sympy>=1.12
 # Standard atmosphere package used by the Capitolo1/8/9 notebooks (and by one test)
 ambiance>=1.3
 # Notebooks

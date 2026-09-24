@@ -24,9 +24,14 @@ Jupyter notebooks and Python code for an aircraft performance course
 | `04_RateOfDescent` | gliding flight (glide angle, sink rate, hodograph, time aloft), speed to fly with wind, idle descent, OEI drift-down | Sec. 8.2, 9.2.3, 9.3.3, 9.4.2 |
 | `05_Takeoff_Landing` | ground roll with ground effect, Roskam's analytical method, numerical integration, wind/slope/altitude/temperature effects, FAR 23/25 statistical methods, balanced field length, landing distance | Ch. 10 |
 | `06_Maneuvering_FlightEnvelope` | level turns, instantaneous vs sustained load factor, turn radius and rate, FAR 23 V-n diagram | Ch. 12 |
+| `07_RateOfClimb_Symbolical` | the climb chapter redone with SymPy: exact optima (jet and propeller), exact steep climb, acceleration factor, symbolic ISA, closed-form ceilings, time-to-climb integrals, OEI gradient | Ch. 9 |
+| `08_RateOfDescent_Symbolical` | the descent chapter redone with SymPy: glide optima, hodograph, time-aloft integral (with exact-angle correction), speed to fly, idle descent, drift-down (Problem 9.4) | Sec. 8.2, 9.2.3, 9.4.2 |
 
 The notebooks explain the theory (with the equation numbers of Roskam & Lan)
 and call small, documented functions of the `aircraft_performance` package.
+The two `*_Symbolical` notebooks derive the climb and descent results exactly
+with SymPy and check them against the textbook values and the numerical
+package.
 Four example aircraft are provided (`aircraft_performance.examples`): a light
 single-engine piston aircraft (the one of `Capitolo9`), the light twin of
 Roskam Examples 9.1/10.2/10.3, an ATR 72-like turboprop and the Gulfstream
