@@ -10,6 +10,7 @@ Jupyter notebooks and Python code for an aircraft performance course
 | `Capitolo9/` | Range and endurance, Breguet equations (Italian) |
 | `PrestazioniRoskam/` | Complete performance calculations following Roskam & Lan (English) |
 | `aircraft_performance/` | Python package used by the `PrestazioniRoskam` notebooks |
+| `lean/` | Lean 4 + Mathlib machine-checked proofs used by notebook `09_Rigorous_Proofs` |
 | `tests/` | Automated tests, including the worked examples of the references |
 | `References/` | Roskam & Lan, *Airplane Aerodynamics and Performance*; Anderson, *Aircraft Performance and Design* |
 
@@ -26,12 +27,15 @@ Jupyter notebooks and Python code for an aircraft performance course
 | `06_Maneuvering_FlightEnvelope` | level turns, instantaneous vs sustained load factor, turn radius and rate, FAR 23 V-n diagram | Ch. 12 |
 | `07_RateOfClimb_Symbolical` | the climb chapter redone with SymPy: exact optima (jet and propeller), exact steep climb, acceleration factor, symbolic ISA, closed-form ceilings, time-to-climb integrals, OEI gradient | Ch. 9 |
 | `08_RateOfDescent_Symbolical` | the descent chapter redone with SymPy: glide optima, hodograph, time-aloft integral (with exact-angle correction), speed to fly, idle descent, drift-down (Problem 9.4) | Sec. 8.2, 9.2.3, 9.4.2 |
+| `09_Rigorous_Proofs` | machine-checked proofs with Lean 4: global optimum of the polar (point E), glide, minimum power (point P), jet best climb (Eqn 9.30), Breguet, time to climb, ISA troposphere (existence and uniqueness) | Ch. 1, 8, 9, 11 |
 
 The notebooks explain the theory (with the equation numbers of Roskam & Lan)
 and call small, documented functions of the `aircraft_performance` package.
 The two `*_Symbolical` notebooks derive the climb and descent results exactly
 with SymPy and check them against the textbook values and the numerical
 package.
+Notebook `09_Rigorous_Proofs` explains the Lean proofs in `lean/` (see
+`lean/README.md` for working with them in VS Code).
 Four example aircraft are provided (`aircraft_performance.examples`): a light
 single-engine piston aircraft (the one of `Capitolo9`), the light twin of
 Roskam Examples 9.1/10.2/10.3, an ATR 72-like turboprop and the Gulfstream

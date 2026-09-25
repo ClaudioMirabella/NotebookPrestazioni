@@ -1,0 +1,18 @@
+# Lean 4 project with the machine-checked proofs used by
+# PrestazioniRoskam/09_Rigorous_Proofs.ipynb.
+# Build (from this folder):  lake exe cache get   # download pre-built Mathlib
+#                            lake build
+name = "AircraftPerformance"
+defaultTargets = ["AircraftPerformance"]
+
+[leanOptions]
+pp.unicode.fun = true
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.34.1"
+
+[[lean_lib]]
+name = "AircraftPerformance"
