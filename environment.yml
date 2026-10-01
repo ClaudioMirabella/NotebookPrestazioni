@@ -1,0 +1,34 @@
+# Conda environment for the whole repository, including the Manim animations.
+#
+#   conda env create -f environment.yml      # once
+#   conda activate prestazioni
+#   manim checkhealth                        # verifies manim, LaTeX and dvisvgm
+#
+# Only the conda-forge channel is used: it ships Manim with PRE-BUILT ManimPango,
+# Cairo, Pango and FFmpeg (no C compiler needed), and it avoids mixing the Cairo
+# library of the Anaconda "defaults" channel with pycairo, a known source of
+# "symbol not found" ImportErrors (Manim FAQ, "I am using Anaconda...").
+# LaTeX is NOT installed here: Manim uses the system TeX Live (see animations/README.md).
+name: prestazioni
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  # scientific stack (aircraft_performance package, notebooks 00-09)
+  - numpy>=2.1
+  - scipy>=1.13
+  - matplotlib>=3.6
+  - sympy>=1.12
+  # notebooks
+  - jupyter
+  - ipykernel
+  # tests and notebook execution
+  - pytest>=7
+  - nbclient>=0.7
+  - nbformat>=5
+  # animations (Manim Community edition, NOT 3b1b's manimgl)
+  - manim=0.20.1
+  - pip
+  - pip:
+      - ambiance>=1.3

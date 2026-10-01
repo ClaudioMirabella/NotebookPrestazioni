@@ -1,0 +1,7 @@
+# Extra dependency for the Manim animations (animations/), for pip users.
+# On Linux pip must COMPILE ManimPango: install first a C compiler, the Python
+# headers, pkg-config and the Cairo/Pango development files, e.g. on Debian/Ubuntu
+#   sudo apt install build-essential python3-dev pkg-config libcairo2-dev libpango1.0-dev
+# Conda users: use environment.yml instead (pre-built binaries from conda-forge).
+-r requirements.txt
+manim==0.20.1

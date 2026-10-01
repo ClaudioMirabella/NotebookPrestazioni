@@ -10,6 +10,7 @@ Jupyter notebooks and Python code for an aircraft performance course
 | `Capitolo9/` | Range and endurance, Breguet equations (Italian) |
 | `PrestazioniRoskam/` | Complete performance calculations following Roskam & Lan (English) |
 | `aircraft_performance/` | Python package used by the `PrestazioniRoskam` notebooks |
+| `animations/` | Manim Community scenes (geometry of climb and glide) embedded in notebooks 03-04 |
 | `lean/` | Lean 4 + Mathlib machine-checked proofs used by notebook `09_Rigorous_Proofs` |
 | `tests/` | Automated tests, including the worked examples of the references |
 | `References/` | Roskam & Lan, *Airplane Aerodynamics and Performance*; Anderson, *Aircraft Performance and Design* |
@@ -21,8 +22,8 @@ Jupyter notebooks and Python code for an aircraft performance course
 | `00_Overview` | conventions, SI units, error handling, example aircraft | - |
 | `01_AerodynamicDatabase_LevelFlight` | parabolic drag polar, parasite-area estimate of CD0, configurations (flaps, gear), polar points E/P/A, stall speeds, thrust and power required, maximum/minimum level speed, flight envelope | Ch. 5, 8, 12.3 |
 | `02_Range_Endurance_Loiter` | specific range and endurance, Breguet equations (propeller and jet), numerical cruise for three flight programs, best speeds, wind, loiter, payload-range diagram, fuel reserves | Ch. 11 |
-| `03_RateOfClimb` | rate of climb and climb gradient, hodograph, jet and propeller optima, steep climbs, acceleration factor, ceilings, time/distance/fuel to climb, OEI second-segment gradient | Ch. 9 |
-| `04_RateOfDescent` | gliding flight (glide angle, sink rate, hodograph, time aloft), speed to fly with wind, idle descent, OEI drift-down | Sec. 8.2, 9.2.3, 9.3.3, 9.4.2 |
+| `03_RateOfClimb` | rate of climb and climb gradient, hodograph, jet and propeller optima, steep climbs, **animation** of the climb geometry, acceleration factor, ceilings, time/distance/fuel to climb, OEI second-segment gradient | Ch. 9 |
+| `04_RateOfDescent` | gliding flight (glide angle, sink rate, hodograph, time aloft), **animation** of the glide geometry, speed to fly with wind, idle descent, OEI drift-down | Sec. 8.2, 9.2.3, 9.3.3, 9.4.2 |
 | `05_Takeoff_Landing` | ground roll with ground effect, Roskam's analytical method, numerical integration, wind/slope/altitude/temperature effects, FAR 23/25 statistical methods, balanced field length, landing distance | Ch. 10 |
 | `06_Maneuvering_FlightEnvelope` | level turns, instantaneous vs sustained load factor, turn radius and rate, FAR 23 V-n diagram | Ch. 12 |
 | `07_RateOfClimb_Symbolical` | the climb chapter redone with SymPy: exact optima (jet and propeller), exact steep climb, acceleration factor, symbolic ISA, closed-form ceilings, time-to-climb integrals, OEI gradient | Ch. 9 |
@@ -42,6 +43,15 @@ Roskam Examples 9.1/10.2/10.3, an ATR 72-like turboprop and the Gulfstream
 IV-like business jet used by Anderson.
 
 ## Quick start
+
+With Anaconda (recommended; includes Manim for the animations, see `animations/README.md`):
+
+```bash
+conda env create -f environment.yml
+conda activate prestazioni
+```
+
+or with pip:
 
 ```bash
 pip install -r requirements.txt

@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+.venv/
+# Lean build output and downloaded packages
+lean/.lake/
+# Manim render cache
+media/
