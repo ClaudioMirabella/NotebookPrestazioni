@@ -1,0 +1,276 @@
+1
+00:00:05,500 --> 00:00:11,500
+Hi, and welcome to the first episode of our journey into the mathematics of waves.
+
+2
+00:00:11,800 --> 00:00:18,200
+Waves are everywhere: sound, light, ocean swells, even the electrons in your phone behave like waves.
+
+3
+00:00:18,500 --> 00:00:24,900
+Before we can write down the wave equation, we need a small toolbox. Here's today's plan.
+
+4
+00:00:25,200 --> 00:00:26,700
+Let's go!
+
+5
+00:00:29,000 --> 00:00:37,800
+So, what is a wave? A good definition: a wave is a disturbance that travels, carrying energy from one place to another.
+
+6
+00:00:38,100 --> 00:00:40,100
+Look at this row of particles.
+
+7
+00:00:46,100 --> 00:00:54,100
+The pattern moves to the right... but keep your eye on the orange particle. It just bobs up and down!
+
+8
+00:00:54,400 --> 00:01:00,000
+The medium stays where it is. Only the disturbance, and its energy, travels along.
+
+9
+00:01:00,283 --> 00:01:07,083
+This is a transverse wave: the particles move perpendicular to the direction in which the wave travels.
+
+10
+00:01:07,383 --> 00:01:16,583
+In a longitudinal wave, like sound in air, the particles jiggle back and forth along the direction of travel, making compressions and rarefactions.
+
+11
+00:01:17,866 --> 00:01:25,866
+Two pictures help a lot. First, freeze time and take a snapshot of the wave: displacement y versus position x.
+
+12
+00:01:26,166 --> 00:01:33,766
+The distance from one crest to the next is the wavelength, lambda. The largest displacement is the amplitude, A.
+
+13
+00:01:34,066 --> 00:01:40,466
+Now do the opposite: sit at one spot and record the displacement as time goes by.
+
+14
+00:01:40,766 --> 00:01:50,366
+The time for one full cycle is the period, T. Its inverse, one over T, is the frequency f: cycles per second, or hertz.
+
+15
+00:01:51,666 --> 00:01:57,666
+Here's the key connection. In one period, the wave moves forward by exactly one wavelength.
+
+16
+00:01:57,966 --> 00:02:03,966
+So its speed is lambda over T, which is the same as lambda times f.
+
+17
+00:02:05,266 --> 00:02:14,466
+Physicists love radians, so we also define the wavenumber k, two pi over lambda, and the angular frequency omega, two pi times f.
+
+18
+00:02:14,750 --> 00:02:18,750
+In this language the speed is simply omega over k.
+
+19
+00:02:21,050 --> 00:02:31,850
+Next up: vectors. A vector is a quantity with both a size and a direction, like the velocity of a wave, or the displacement of a particle.
+
+20
+00:02:32,150 --> 00:02:34,550
+We draw it as an arrow.
+
+21
+00:02:34,850 --> 00:02:42,450
+Any vector in the plane can be built from two pieces, its components along the x and y axes.
+
+22
+00:02:42,750 --> 00:02:53,150
+With the unit vectors x hat and y hat, each of length one, we write: A equals A x, x hat, plus A y, y hat.
+
+23
+00:02:53,450 --> 00:03:00,250
+Pythagoras gives its length, the magnitude. And a bit of trigonometry gives its direction, the angle theta.
+
+24
+00:03:01,550 --> 00:03:05,150
+Adding vectors is easy. Here's a second vector, B.
+
+25
+00:03:05,450 --> 00:03:15,450
+Slide B so that its tail sits on the tip of A. The sum goes from the start of A to the end of B.
+
+26
+00:03:15,750 --> 00:03:20,550
+In components you just add the x's together and the y's together.
+
+27
+00:03:21,833 --> 00:03:27,833
+One more operation we'll need: the dot product. Multiply matching components, then add them up.
+
+28
+00:03:28,133 --> 00:03:37,333
+Geometrically, it's the two lengths times the cosine of the angle between the vectors: it measures how much they point the same way.
+
+29
+00:03:37,616 --> 00:03:47,216
+Why bother? Because in three dimensions the phase of a plane wave contains exactly such a dot product, k dot r. We'll get there!
+
+30
+00:03:49,516 --> 00:03:55,916
+Now for something that sounds scary, but is actually a wave lover's best friend: complex numbers.
+
+31
+00:03:56,216 --> 00:04:07,016
+It all starts with the imaginary unit i, defined so that i squared equals minus one. No real number can do that, so we simply invent one.
+
+32
+00:04:08,316 --> 00:04:15,516
+A complex number z, a plus i b, has a real part, a, and an imaginary part, b.
+
+33
+00:04:15,816 --> 00:04:23,016
+Use them as coordinates, and every complex number becomes a point, or an arrow, in the complex plane.
+
+34
+00:04:23,316 --> 00:04:33,316
+Looks a lot like a 2D vector, right? The length of the arrow is the magnitude of z, and its angle is called the phase.
+
+35
+00:04:33,616 --> 00:04:41,616
+So we can also write z using its length and its angle: magnitude, times cosine theta plus i sine theta.
+
+36
+00:04:43,916 --> 00:04:49,516
+Here's the magic trick. Start from the number one, and multiply it by i.
+
+37
+00:04:54,616 --> 00:05:02,216
+One, i, minus one, minus i, and back to one. Multiplying by i is a rotation by 90 degrees!
+
+38
+00:05:04,516 --> 00:05:10,516
+In general, when you multiply two complex numbers, their magnitudes multiply and their angles add.
+
+39
+00:05:10,816 --> 00:05:18,416
+Rotation and stretching, all in one operation. That's exactly why complex numbers are so handy for anything that oscillates.
+
+40
+00:05:20,716 --> 00:05:29,516
+Last tool: the complex conjugate, z star. It flips the sign of the imaginary part: a mirror image across the real axis.
+
+41
+00:05:29,816 --> 00:05:39,016
+And z times z star is the magnitude squared: always a real number. We'll use that a lot, for instance to compute intensities.
+
+42
+00:05:41,300 --> 00:05:46,500
+Now, perhaps the most beautiful formula you'll see in this course: Euler's relation.
+
+43
+00:05:46,800 --> 00:05:57,200
+Since cos squared plus sin squared is one, e to the i theta always sits on the unit circle, at angle theta from the real axis.
+
+44
+00:05:57,500 --> 00:06:01,100
+As theta grows, the point goes round and round.
+
+45
+00:06:01,400 --> 00:06:10,200
+Now watch its shadows. The horizontal shadow, the real part, is cosine theta. The vertical shadow, the imaginary part, is sine theta.
+
+46
+00:06:10,500 --> 00:06:19,700
+A rotating arrow secretly contains two oscillations, ninety degrees apart. Keep this picture in mind: it is the heart of the next episode.
+
+47
+00:06:21,000 --> 00:06:27,800
+Euler gives the neatest way to write any complex number: magnitude times e to the i theta.
+
+48
+00:06:28,100 --> 00:06:32,100
+And multiplying just adds the angles, simply because exponents add.
+
+49
+00:06:34,400 --> 00:06:38,800
+Euler also works backwards. Two half-length arrows spinning in opposite directions...
+
+50
+00:06:39,100 --> 00:06:45,500
+...always add up to a point on the real axis: their sum is exactly cosine theta.
+
+51
+00:06:45,800 --> 00:06:49,800
+A similar trick, with a minus sign, gives the sine.
+
+52
+00:06:51,100 --> 00:07:02,700
+And a little bonus: set theta equal to pi. e to the i pi, plus one, equals zero. Five of the most important numbers in maths, in one line.
+
+53
+00:07:05,000 --> 00:07:14,200
+Finally, let's put things together and describe a wave with a function. The displacement y depends on position x and on time t.
+
+54
+00:07:14,483 --> 00:07:18,083
+Take any shape f of x, like this pulse.
+
+55
+00:07:18,383 --> 00:07:28,783
+Now replace x by x minus v t. As time goes on, the whole shape slides to the right at speed v, without changing its form.
+
+56
+00:07:29,083 --> 00:07:38,683
+Why? Follow the peak. It sits where x minus v t keeps the same value, that is, at a point moving with speed v.
+
+57
+00:07:38,983 --> 00:07:45,383
+Flip the sign, f of x plus v t, and the pulse travels to the left.
+
+58
+00:07:46,683 --> 00:07:57,883
+The most important example of all is the harmonic wave: A, times the cosine of k x minus omega t, plus phi. A sine works just as well.
+
+59
+00:07:58,166 --> 00:08:09,366
+It's f of x minus v t in disguise: k x minus omega t is k times x minus v t, with v equal to omega over k.
+
+60
+00:08:09,650 --> 00:08:20,850
+The whole argument of the cosine is called the phase. And phi, the phase constant, slides the wave along: it fixes where the wave starts at time zero.
+
+61
+00:08:24,133 --> 00:08:34,133
+And here's the payoff of Euler's relation: the same wave is the real part of A, e to the i, k x minus omega t.
+
+62
+00:08:34,433 --> 00:08:41,233
+Behind every point of the wave, there's a little rotating arrow. That arrow is called a phasor.
+
+63
+00:08:41,516 --> 00:08:45,116
+And phasors are exactly where we'll start next time.
+
+64
+00:08:47,416 --> 00:08:52,216
+Let's recap. A wave is a travelling disturbance, with speed lambda f.
+
+65
+00:08:52,500 --> 00:08:55,700
+Vectors have components, a magnitude and a direction.
+
+66
+00:08:56,000 --> 00:09:00,000
+Complex numbers live in a plane, and multiplying them rotates.
+
+67
+00:09:00,300 --> 00:09:03,100
+Euler connects exponentials with cosines and sines.
+
+68
+00:09:03,400 --> 00:09:09,400
+And any function of x minus v t is a wave travelling to the right.
+
+69
+00:09:09,700 --> 00:09:15,300
+Thanks for watching, and see you in episode two, where the phasors start spinning!
+

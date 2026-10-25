@@ -1,0 +1,7 @@
+# pip alternative to environment.yml. On Linux pip compiles ManimPango: install first
+#   sudo apt install build-essential python3-dev pkg-config libcairo2-dev libpango1.0-dev
+# and always use a virtual environment (python -m venv .venv, or uv venv).
+manim==0.20.1
+numpy>=2.1
+pytest>=7
+ruff

@@ -1,0 +1,21 @@
+# Conda environment for "The Mathematics of Waves" video series.
+#
+#   conda env create -f environment.yml      # once
+#   conda activate waves
+#   manim checkhealth                        # manim, LaTeX and dvisvgm must be PASSED
+#
+# Only conda-forge is used: it ships Manim with pre-built ManimPango, Cairo, Pango
+# and FFmpeg (no C compiler needed) and avoids mixing Anaconda's "defaults" Cairo
+# with pycairo (a known cause of "symbol not found" ImportErrors, see the Manim FAQ).
+# LaTeX comes from your system TeX Live (see README.md).
+name: waves
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - manim=0.20.1          # Manim Community edition (NOT 3b1b's manimgl)
+  - numpy>=2.1
+  - pytest>=7             # tests/
+  - ruff                  # linter, configured in pyproject.toml
+  - jupyter               # optional: %%manim magic in notebooks
