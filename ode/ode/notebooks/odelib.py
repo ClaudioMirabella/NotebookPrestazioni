@@ -22,6 +22,12 @@ Numerical methods (fixed step)
 Plotting
     slope_field                   short segments of slope f(t, y)             (Lebl 1.2)
     phase_line                    critical points and arrows of x' = f(x)     (Lebl 1.6)
+Second-order linear equations
+    characteristic_roots          roots of a r^2 + b r + c = 0                (Lebl 2.2)
+    constant_coefficient_solution exact y(t) of a y'' + b y' + c y = 0, any a, b, c (Lebl 2.2)
+    damping_regime                over-, critically, under-damped, undamped   (Lebl 2.4)
+    free_response                 exact x(t) of m x'' + c x' + k x = 0         (Lebl 2.2, 2.4)
+    wronskian_values              W = y1 y2' - y1' y2 from sampled values     (notebook 05)
 
 Error handling: invalid arguments raise ``ValueError`` (never a silent NaN), with one
 documented exception: ``logistic_solution`` returns NaN for times at or beyond the
@@ -301,3 +307,103 @@ def classify_equilibrium(fprime_at_point: float) -> str:
     if fprime_at_point > 0:
         return "unstable"
     return "inconclusive"
+
+
+# ---------------------------------------------------------------------------
+# Second-order linear equations with constant coefficients (notebooks 05-07)
+# ---------------------------------------------------------------------------
+def characteristic_roots(a: float, b: float, c: float) -> tuple[complex, complex]:
+    """Roots r1, r2 of the characteristic equation a r^2 + b r + c = 0 (Lebl, Section 2.2).
+
+    Obtained by substituting y = e^{rt} into a y'' + b y' + c y = 0. Returned as complex
+    numbers (imaginary part 0 for real roots), ordered so that Re(r1) >= Re(r2) and, for a
+    complex pair, Im(r1) > 0. Requires a != 0 (otherwise the equation is not second order).
+    """
+    a, b, c = _require_finite("a", a), _require_finite("b", b), _require_finite("c", c)
+    if a == 0:
+        raise ValueError("a must be nonzero: the equation must be of second order")
+    disc = complex(b * b - 4 * a * c)
+    root = np.sqrt(disc)
+    r1, r2 = (-b + root) / (2 * a), (-b - root) / (2 * a)
+    if (r1.real, r1.imag) < (r2.real, r2.imag):
+        r1, r2 = r2, r1
+    return complex(r1), complex(r2)
+
+
+def constant_coefficient_solution(t: ArrayLike, a: float, b: float, c: float, y0: float, v0: float,
+                                  rtol: float = 1e-9) -> np.ndarray:
+    """Exact solution of a y'' + b y' + c y = 0 with y(0) = y0, y'(0) = v0 (Lebl, Section 2.2).
+
+    Three cases, according to the roots r1, r2 of a r^2 + b r + c = 0:
+      * real, distinct:   y = C1 e^{r1 t} + C2 e^{r2 t},   C1 = (v0 - r2 y0)/(r1 - r2), C2 = y0 - C1;
+      * real, repeated r: y = (y0 + (v0 - r y0) t) e^{r t};
+      * complex a +- ib:  y = e^{a t} (y0 cos(b t) + (v0 - a y0)/b sin(b t)).
+    The constants come from solving C1 + C2 = y0, r1 C1 + r2 C2 = v0: a linear system whose
+    determinant is the Wronskian of the two basis solutions at t = 0 (notebook 05). The root is
+    treated as repeated when |b^2 - 4ac| <= rtol b^2.
+    """
+    t = np.asarray(t, dtype=float)
+    r1, r2 = characteristic_roots(a, b, c)
+    disc = b * b - 4 * a * c
+    if abs(disc) <= rtol * b * b:                         # repeated root r = -b/(2a)
+        r = -b / (2 * a)
+        return (y0 + (v0 - r * y0) * t) * np.exp(r * t)
+    if disc > 0:                                          # two real roots
+        r1, r2 = r1.real, r2.real
+        c1 = (v0 - r2 * y0) / (r1 - r2)
+        return c1 * np.exp(r1 * t) + (y0 - c1) * np.exp(r2 * t)
+    alpha, beta = r1.real, r1.imag                        # complex pair alpha +- i beta, beta > 0
+    return np.exp(alpha * t) * (y0 * np.cos(beta * t) + (v0 - alpha * y0) / beta * np.sin(beta * t))
+
+def damping_regime(m: float, c: float, k: float, rtol: float = 1e-9) -> str:
+    """Regime of m x'' + c x' + k x = 0 (m, k > 0, c >= 0), from the discriminant c^2 - 4mk.
+
+    'undamped' (c = 0), 'underdamped' (c^2 < 4mk), 'critically damped' (c^2 = 4mk within the
+    relative tolerance ``rtol``) or 'overdamped' (c^2 > 4mk)  (Lebl, Section 2.4).
+    """
+    m, k = _require_positive("m", m), _require_positive("k", k)
+    c = float(c)
+    if c < 0:
+        raise ValueError("the damping coefficient c must be >= 0")
+    if c == 0:
+        return "undamped"
+    c_crit = 2 * np.sqrt(m * k)
+    if abs(c - c_crit) <= rtol * c_crit:
+        return "critically damped"
+    return "underdamped" if c < c_crit else "overdamped"
+
+
+def free_response(t: ArrayLike, m: float, c: float, k: float, x0: float, v0: float,
+                  rtol: float = 1e-9) -> np.ndarray:
+    """Exact solution of m x'' + c x' + k x = 0 with x(0) = x0, x'(0) = v0.
+
+    With p = c/(2m) and w0 = sqrt(k/m) the equation is x'' + 2p x' + w0^2 x = 0 (Lebl 2.4):
+      * p > w0 (overdamped):  x = C1 e^{r1 t} + C2 e^{r2 t},  r1,2 = -p +- sqrt(p^2 - w0^2);
+      * p = w0 (critical):    x = (x0 + (v0 + p x0) t) e^{-p t};
+      * p < w0 (underdamped): x = e^{-p t} (x0 cos(w1 t) + (v0 + p x0)/w1 sin(w1 t)),
+                               w1 = sqrt(w0^2 - p^2)  (p = 0: undamped).
+    Near the critical value the two-exponential formula suffers from cancellation, so the
+    critical formula is used when |c - c_crit| <= rtol c_crit (same test as damping_regime).
+    """
+    t = np.asarray(t, dtype=float)
+    regime = damping_regime(m, c, k, rtol)
+    p, w0 = c / (2 * m), np.sqrt(k / m)
+    if regime == "critically damped":
+        return (x0 + (v0 + p * x0) * t) * np.exp(-p * t)
+    if regime == "overdamped":
+        s = np.sqrt(p * p - w0 * w0)
+        r1, r2 = -p + s, -p - s
+        c1 = (v0 - r2 * x0) / (r1 - r2)          # from C1 + C2 = x0, r1 C1 + r2 C2 = v0
+        return c1 * np.exp(r1 * t) + (x0 - c1) * np.exp(r2 * t)
+    w1 = np.sqrt(w0 * w0 - p * p)
+    return np.exp(-p * t) * (x0 * np.cos(w1 * t) + (v0 + p * x0) / w1 * np.sin(w1 * t))
+
+
+def wronskian_values(y1: ArrayLike, dy1: ArrayLike, y2: ArrayLike, dy2: ArrayLike) -> np.ndarray:
+    """Wronskian W = y1 y2' - y1' y2 from sampled values of two functions and their derivatives.
+
+    Geometrically, W(t) is the signed area of the parallelogram spanned by the two state
+    vectors (y1, y1') and (y2, y2') in the phase plane (notebook 05).
+    """
+    y1, dy1, y2, dy2 = (np.asarray(v, dtype=float) for v in (y1, dy1, y2, dy2))
+    return y1 * dy2 - dy1 * y2

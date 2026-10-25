@@ -18,6 +18,14 @@
 | logistic equation, harvesting | `notebooks/03_Logistic_Equation.ipynb` | episode 2 | 1.6 |
 | Euler's method and beyond | `notebooks/04_Euler_Method.ipynb` | episode 3 | 1.7 |
 
+## Second block: second-order linear equations (units U5-U6)
+
+| Topic | Notebook | Video | Lebl |
+|---|---|---|---|
+| Wronskian, Abel's theorem, reduction of order, Sturm separation | `notebooks/05_Wronskian_Abel.ipynb` | - | 2.1, 2.3 |
+| characteristic equation: distinct, repeated, complex roots | `notebooks/06_Characteristic_Equation.ipynb` | - | 2.2, 2.3 |
+| mass-spring-damper, RLC circuit, energy, phase-plane areas | `notebooks/07_Mass_Spring_Damper.ipynb` | - | 2.4 |
+
 Start from `notebooks/00_Index.ipynb`.
 
 ## Setup
@@ -25,7 +33,7 @@ Start from `notebooks/00_Index.ipynb`.
 ```bash
 conda env create -f environment.yml
 conda activate ode
-cd notebooks && python -m pytest        # 28 tests: odelib against the references
+cd notebooks && python -m pytest        # 40 tests: odelib against the references
 jupyter lab                              # or open the folder in VS Code (kernel: ode)
 ```
 
@@ -35,4 +43,5 @@ Every reference value used in the notebooks is reproduced by the code and checke
 `assert` statements: Lebl's Example 0.2.1, Figures 1.6.2 and 1.6.5-1.6.7, Tables 1.7.1-1.7.2 and
 Exercises 1.7.4 and 1.7.9; the radiocarbon example of Adkins and Davidson (Springer, 2012); the
 absolute-stability analysis of Meseguer (Wiley, 2020), Section 8.2. Two small slips of the course
-text found this way are pointed out in notebook 04.
+text found this way are pointed out in notebook 04. Notebooks 05-07 also use Adkins and Davidson (Sects. 3.2-3.6,
+4.2, 5.2), Arfken, Weber and Harris (Section 7.6) and the NIST DLMF (Airy and Bessel Wronskians).
