@@ -1,0 +1,160 @@
+1
+00:00:05,500 --> 00:00:16,700
+Welcome to our series on differential equations! Today we meet the most important differential equation of all, and we will see it in two disguises: growth and decay.
+
+2
+00:00:17,000 --> 00:00:26,600
+A differential equation is an equation for an unknown function, involving its derivatives. Its solution is not a number: it is a whole function.
+
+3
+00:00:26,900 --> 00:00:30,100
+Let's see where such an equation comes from.
+
+4
+00:00:32,400 --> 00:00:39,600
+Picture bacteria on a Petri dish, with plenty of food and space. Every bacterium divides, again and again.
+
+5
+00:00:45,300 --> 00:00:52,500
+The more bacteria there are, the more new bacteria appear per second. Twice the population, twice the growth.
+
+6
+00:00:52,800 --> 00:00:58,800
+In words: the rate of change of the population is proportional to the population itself.
+
+7
+00:00:59,100 --> 00:01:08,300
+In symbols: d P by d t equals k times P. The constant k is the growth rate. This is our differential equation.
+
+8
+00:01:09,583 --> 00:01:18,783
+It's first order, linear, and autonomous: the right-hand side does not depend on time explicitly. Lebl's notes start exactly here, in section 0.2.
+
+9
+00:01:21,083 --> 00:01:31,883
+Even before solving it, the equation tells us a lot. At every point, t and P, it gives the slope of the solution passing through that point.
+
+10
+00:01:32,183 --> 00:01:38,583
+Draw a short segment with that slope at many points, and you get the slope field.
+
+11
+00:01:38,883 --> 00:01:47,683
+A solution is a curve that follows the slopes everywhere. Start from 100 bacteria at time zero, and just follow the arrows.
+
+12
+00:01:47,983 --> 00:01:56,383
+Change the starting value and you get another solution. They never cross: the equation has exactly one solution through each point.
+
+13
+00:01:59,683 --> 00:02:05,283
+That's Picard's existence and uniqueness theorem at work, from section 1.2 of the notes.
+
+14
+00:02:07,566 --> 00:02:12,766
+Now let's solve it, by separation of variables, section 1.3 of the notes.
+
+15
+00:02:13,066 --> 00:02:20,666
+Divide both sides by P. That's allowed: by uniqueness, a solution that starts away from zero never touches zero.
+
+16
+00:02:20,966 --> 00:02:24,566
+Integrate both sides from time zero to time t.
+
+17
+00:02:24,866 --> 00:02:34,066
+The left-hand side is the derivative of the logarithm of P, so we get log of P over P zero equals k t.
+
+18
+00:02:34,350 --> 00:02:39,950
+Exponentiate, and there it is: P equals P zero, e to the k t.
+
+19
+00:02:41,233 --> 00:02:48,433
+Always check: the derivative is k times P, and at time zero we get P zero. It works.
+
+20
+00:02:50,733 --> 00:02:59,533
+Lebl's first example: 100 bacteria at time zero, 200 after 10 seconds. Plugging in gives k equal to log 2 over 10.
+
+21
+00:02:59,833 --> 00:03:03,833
+So the population doubles every 10 seconds, whatever its size.
+
+22
+00:03:04,133 --> 00:03:10,133
+Ten seconds, 200. Twenty, 400. Then 800, 1600, 3200... and after one minute, 6400 bacteria.
+
+23
+00:03:10,433 --> 00:03:19,633
+Of course it's a model: real bacteria come in whole numbers, and the food eventually runs out. But it's an excellent first approximation.
+
+24
+00:03:21,933 --> 00:03:31,533
+Now flip the sign. Radioactive atoms decay at random, and the number of decays per second is proportional to the number of atoms left.
+
+25
+00:03:31,833 --> 00:03:40,233
+Same equation, with k equal to minus lambda. The solution is N zero, e to the minus lambda t: exponential decay.
+
+26
+00:03:40,533 --> 00:03:42,533
+Let's measure time in half-lives.
+
+27
+00:03:42,833 --> 00:03:49,233
+After one half-life, half the atoms are left. After two, a quarter. After three, an eighth.
+
+28
+00:03:49,533 --> 00:03:59,133
+Setting N equal to half of N zero gives the half-life: log 2 over lambda. It doesn't depend on how much you start with.
+
+29
+00:04:02,433 --> 00:04:11,233
+A famous application: carbon-14, with a half-life of 5730 years. Living things keep a constant share of it; after death, it decays.
+
+30
+00:04:11,533 --> 00:04:19,533
+A piece of wood has 75 percent of the original carbon-14. Read the curve backwards: it's about 2378 years old.
+
+31
+00:04:19,833 --> 00:04:29,033
+That's the example in Adkins and Davidson. Real laboratories also calibrate for changes in the atmosphere, but the core is this one equation.
+
+32
+00:04:31,316 --> 00:04:35,316
+Same equation, two behaviours, decided by the sign of k.
+
+33
+00:04:35,616 --> 00:04:44,416
+Look at the solution y equal to zero. With k positive, nearby solutions run away from it: zero is an unstable equilibrium.
+
+34
+00:04:44,716 --> 00:04:49,916
+With k negative, every solution is pulled back to zero: a stable equilibrium.
+
+35
+00:04:50,216 --> 00:04:56,616
+And the same equation describes compound interest, a capacitor discharging through a resistor, and much more.
+
+36
+00:04:58,916 --> 00:05:03,716
+Let's recap. Rate proportional to amount gives y prime equals k y.
+
+37
+00:05:04,000 --> 00:05:08,400
+Its unique solution is y zero, e to the k t.
+
+38
+00:05:08,700 --> 00:05:11,500
+Growth doubles every log 2 over k.
+
+39
+00:05:11,800 --> 00:05:14,600
+Decay halves every log 2 over lambda.
+
+40
+00:05:14,900 --> 00:05:20,500
+But real populations cannot grow forever. Next time: the logistic equation. See you there!
+

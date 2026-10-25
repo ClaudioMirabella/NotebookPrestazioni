@@ -1,0 +1,124 @@
+1
+00:00:05,500 --> 00:00:09,900
+Last time, exponential growth: the population doubles again and again, forever.
+
+2
+00:00:10,200 --> 00:00:21,400
+But no Petri dish, no lake, no planet has unlimited food and space. Sooner or later, growth must slow down. How do we put that into an equation?
+
+3
+00:00:23,700 --> 00:00:33,300
+Look at the growth rate per individual: the derivative divided by x. For exponential growth it's a constant, whatever the size of the population.
+
+4
+00:00:33,600 --> 00:00:42,000
+A more realistic choice: the per-capita rate decreases as the population grows, and it reaches zero at a limiting population, M.
+
+5
+00:00:42,300 --> 00:00:50,700
+The simplest such law is a straight line: one over x, d x d t, equals k times M minus x.
+
+6
+00:00:51,000 --> 00:01:01,400
+Multiply by x and you get the logistic equation: x prime equals k x, times M minus x. That's the notation of Lebl's notes, section 1.6.
+
+7
+00:01:02,700 --> 00:01:11,500
+M is the carrying capacity, the largest population the environment can sustain. This equation is nonlinear, because of the x squared term.
+
+8
+00:01:13,800 --> 00:01:21,800
+The equation is autonomous: x prime depends only on x. So let's simply plot the right-hand side, f of x.
+
+9
+00:01:22,100 --> 00:01:32,100
+Where f is zero, x prime is zero: nothing changes. Those are the critical points, x equal zero and x equal M: two equilibrium solutions.
+
+10
+00:01:32,400 --> 00:01:43,200
+Between them, f is positive, so x increases: arrow to the right. Above M, f is negative: x decreases. Below zero, also negative: x runs away downwards.
+
+11
+00:01:43,500 --> 00:01:55,500
+The arrows point towards M from both sides: M is stable. They point away from zero: zero is unstable. The slope of f at each point tells the same story.
+
+12
+00:01:55,800 --> 00:01:59,800
+Nudge a population sitting at M, and it comes back.
+
+13
+00:02:00,100 --> 00:02:06,500
+Nudge the empty population at zero with a few individuals, and it grows away towards M.
+
+14
+00:02:08,800 --> 00:02:16,000
+Here's the slope field for k equal to 0.1 and M equal to 5, exactly Lebl's figure 1.6.2.
+
+15
+00:02:17,300 --> 00:02:24,900
+Start with a small population: slow growth, then faster, then it levels off at M. The famous S-shaped curve.
+
+16
+00:02:25,200 --> 00:02:33,200
+Move the starting value up, and every solution still approaches M; start above M, and the population shrinks towards it.
+
+17
+00:02:36,500 --> 00:02:42,900
+Notice the inflection point: growth is fastest exactly when the population is half the carrying capacity.
+
+18
+00:02:45,200 --> 00:02:56,400
+The equation is separable, and with partial fractions we get this formula. Check: at time zero it gives x zero, and as t grows it tends to M.
+
+19
+00:02:57,683 --> 00:03:08,883
+A surprise hides in the formula. If x zero is negative, the denominator reaches zero at a finite time, t star, and the solution dives to minus infinity.
+
+20
+00:03:09,166 --> 00:03:19,166
+The equation is a perfectly smooth polynomial, yet the solution exists only for a finite time. Picard's theorem only promises a solution near the start.
+
+21
+00:03:21,466 --> 00:03:28,666
+Now remove individuals at a constant rate h: fishing, hunting, or, in Lebl's notes, aliens who harvest humans.
+
+22
+00:03:28,966 --> 00:03:38,166
+Harvesting simply shifts the graph of f down by h. Its zeros are the equilibria: with no harvesting, zero and M equal 8.
+
+23
+00:03:38,450 --> 00:03:47,650
+Harvest one million per year: two equilibria, B, about 1.55, unstable, and A, about 6.45, stable. Start above B and the population survives.
+
+24
+00:03:47,933 --> 00:03:55,533
+Increase h to 1.6, which is k M squared over 4. The two equilibria collide at x equal 4.
+
+25
+00:03:55,816 --> 00:04:05,016
+This is a saddle-node bifurcation. The merged point attracts from above but repels from below: the smallest disturbance can wipe the population out.
+
+26
+00:04:05,300 --> 00:04:13,700
+Harvest any more, and there are no equilibria at all. Whatever the starting population, it collapses. A sobering lesson for fisheries.
+
+27
+00:04:16,000 --> 00:04:20,800
+To recap: the logistic equation lets the per-capita growth rate decrease linearly.
+
+28
+00:04:21,083 --> 00:04:25,483
+It has two equilibria: zero, unstable, and the carrying capacity, stable.
+
+29
+00:04:25,783 --> 00:04:29,783
+The phase line gives the long-term behaviour without solving anything.
+
+30
+00:04:30,083 --> 00:04:34,883
+The exact solution is the S-curve, steepest at half the carrying capacity.
+
+31
+00:04:35,166 --> 00:04:43,966
+And harvesting can push the system over a tipping point. Next time: how to solve equations numerically, with Euler's method. See you!
+

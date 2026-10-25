@@ -1,0 +1,6 @@
+# Manim render cache and rendered videos (publish the videos separately)
+media/
+output/*.mp4
+__pycache__/
+.pytest_cache/
+.ruff_cache/

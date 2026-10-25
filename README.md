@@ -11,6 +11,7 @@ Jupyter notebooks and Python code for an aircraft performance course
 | `PrestazioniRoskam/` | Complete performance calculations following Roskam & Lan (English) |
 | `aircraft_performance/` | Python package used by the `PrestazioniRoskam` notebooks |
 | `animations/` | Manim Community scenes (geometry of climb and glide) embedded in notebooks 03-04 |
+| `ode/` | MATH 331 Differential Equations: lecture plan, reference PDFs, notebooks (growth, decay, logistic, Euler) and Manim videos |
 | `lean/` | Lean 4 + Mathlib machine-checked proofs used by notebook `09_Rigorous_Proofs` |
 | `tests/` | Automated tests, including the worked examples of the references |
 | `References/` | Roskam & Lan, *Airplane Aerodynamics and Performance*; Anderson, *Aircraft Performance and Design* |

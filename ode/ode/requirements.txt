@@ -1,0 +1,14 @@
+# pip alternative to environment.yml (use a virtual environment).
+# For the videos on Linux, pip compiles ManimPango: first install
+#   sudo apt install build-essential python3-dev pkg-config libcairo2-dev libpango1.0-dev
+numpy>=2.1
+scipy>=1.13
+matplotlib>=3.6
+sympy>=1.12
+jupyterlab
+ipywidgets>=8
+nbclient>=0.7
+nbformat>=5
+pytest>=7
+ruff
+manim==0.20.1

@@ -1,0 +1,128 @@
+1
+00:00:05,500 --> 00:00:15,100
+Growth, decay, the logistic equation: so far we could always find a formula. Most differential equations, like this one, have no formula at all.
+
+2
+00:00:15,400 --> 00:00:24,200
+But the equation still tells us the slope at every point. And that is enough to approximate the solution. Let's see how.
+
+3
+00:00:26,500 --> 00:00:35,300
+Lebl's example: y prime equals y squared over 3, starting from y equal 1 at x equal 0. Here's its slope field.
+
+4
+00:00:36,600 --> 00:00:46,600
+At the starting point, the equation gives the slope: one third. Follow the tangent line for a step of length h, here h equal 1.
+
+5
+00:00:46,900 --> 00:00:54,500
+At the new point, compute the new slope, and follow it for another step. Repeat. That's all: Euler's method.
+
+6
+00:00:54,800 --> 00:01:04,000
+Two steps give y at 2 approximately 1.926. The exact solution, 3 over 3 minus x, gives 3. We are quite far off.
+
+7
+00:01:07,283 --> 00:01:12,883
+The cure is obvious: take smaller steps. h = 1: y(2) is about 1.926.
+
+8
+00:01:13,166 --> 00:01:15,966
+h = 0.5: y(2) is about 2.209.
+
+9
+00:01:16,250 --> 00:01:19,050
+h = 0.25: y(2) is about 2.472.
+
+10
+00:01:19,333 --> 00:01:22,133
+h = 0.125: y(2) is about 2.680.
+
+11
+00:01:24,416 --> 00:01:32,416
+Here's Lebl's table 1.7.1. Each time we halve h, the error is multiplied by a number that approaches one half.
+
+12
+00:01:32,716 --> 00:01:42,716
+The error is proportional to h: Euler's method is a first-order method. To gain one digit of accuracy, you need ten times as many steps.
+
+13
+00:01:45,016 --> 00:01:55,816
+Taylor's theorem explains it. The exact solution after one step is y plus h y prime, which is Euler's step, plus a remainder of order h squared.
+
+14
+00:01:56,116 --> 00:02:01,316
+So each step makes an error of size h squared, the local error.
+
+15
+00:02:01,616 --> 00:02:06,416
+To reach a fixed point we need about one over h steps...
+
+16
+00:02:06,700 --> 00:02:15,900
+...and the errors add up to something proportional to h. A more careful argument, in notebook 04, turns this into a rigorous bound.
+
+17
+00:02:19,183 --> 00:02:26,783
+Euler uses only the slope at the start of the step, so it always lags behind a curving solution.
+
+18
+00:02:27,083 --> 00:02:37,083
+Improved Euler, or Heun's method, also computes the slope at the end of the Euler step, and then uses the average of the two slopes.
+
+19
+00:02:37,383 --> 00:02:40,983
+In formulas: k one, k two, and the average.
+
+20
+00:02:41,283 --> 00:02:55,683
+One extra evaluation of f, and the method becomes second order: halve h, and the error drops by four. The classical Runge-Kutta method uses four slopes and is fourth order: halve h, error divided by sixteen.
+
+21
+00:02:57,983 --> 00:03:05,983
+One more lesson, from Lebl's exercise 1.7.4. Take y prime equals minus 5 y: the solution decays quietly to zero.
+
+22
+00:03:06,283 --> 00:03:11,083
+Euler's step multiplies y by one minus 5 h, at every step.
+
+23
+00:03:11,366 --> 00:03:14,966
+h = 0.1: factor 0.5, a smooth decay. Fine.
+
+24
+00:03:15,266 --> 00:03:21,666
+h = 0.3: factor minus 0.5. The numbers oscillate around zero: an artefact of the method.
+
+25
+00:03:21,966 --> 00:03:28,366
+h = 0.45: factor minus 1.25. The numbers grow and explode, while the true solution decays!
+
+26
+00:03:28,666 --> 00:03:39,466
+The numbers decay only if one minus 5 h is smaller than one in absolute value, that is, h smaller than 0.4. This is called absolute stability.
+
+27
+00:03:39,766 --> 00:03:47,766
+Equations that force tiny steps for stability, not for accuracy, are called stiff. Professional solvers have special methods for them.
+
+28
+00:03:50,066 --> 00:03:55,266
+Let's recap. Euler's method follows the tangent line, one step at a time.
+
+29
+00:03:55,566 --> 00:03:58,766
+Its error is proportional to the step size.
+
+30
+00:03:59,066 --> 00:04:03,466
+Averaging slopes, as Heun and Runge-Kutta do, gives much faster convergence.
+
+31
+00:04:03,766 --> 00:04:09,366
+Steps that are too large can make a decaying solution explode in the computer.
+
+32
+00:04:09,650 --> 00:04:24,850
+And one last warning, from Lebl's table 1.7.2: if the exact solution blows up, the numbers keep changing as you refine h. Numbers that settle are evidence; numbers that keep changing are a red flag. Thanks for watching!
+

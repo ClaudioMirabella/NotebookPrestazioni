@@ -1,0 +1,25 @@
+# Conda environment for the MATH 331 material (notebooks and videos).
+#
+#   conda env create -f environment.yml      # once
+#   conda activate ode
+#
+# Only conda-forge: it ships Manim with pre-built ManimPango, Cairo, Pango and FFmpeg and avoids
+# mixing Anaconda's "defaults" Cairo with pycairo (see the Manim installation FAQ).
+# LaTeX for the videos comes from your system TeX Live (see videos/README.md).
+name: ode
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - numpy>=2.1
+  - scipy>=1.13
+  - matplotlib>=3.6
+  - sympy>=1.12
+  - jupyterlab
+  - ipywidgets>=8         # sliders in the notebooks
+  - nbclient>=0.7         # execute notebooks from the command line
+  - nbformat>=5
+  - pytest>=7
+  - ruff
+  - manim=0.20.1          # videos (Manim Community edition)
